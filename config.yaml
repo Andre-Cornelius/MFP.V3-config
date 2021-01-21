@@ -1,6 +1,6 @@
 templates:
-    A4 portrait: !template
-      reportTemplate: A4-Hochformat.jrxml
+    A4 landscape: !template
+      reportTemplate: A4-Querformat.jrxml
       attributes:
         qrcodeurl: !string {}
         dataOwner: !string {}
@@ -8,8 +8,8 @@ templates:
         shortLink: !string {}
         map: !map
           maxDpi: 200
-          width: 539
-          height: 722
+          width: 785
+          height: 475
         scalebar: !scalebar
           width: 122
           height: 25
@@ -24,10 +24,10 @@ templates:
         northArrow: !northArrow
           size: 28
           default:
-            graphic: "file://north-arrow.svg"       
+            graphic: "file://north-arrow.svg"
       processors:
           - !reportBuilder
-            directory: '.'         
+            directory: '.'
           - !createMap {}
           - !createScalebar {}
           - !createNorthArrow {}
