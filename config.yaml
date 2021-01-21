@@ -1,0 +1,59 @@
+templates:
+    A4 portrait: !template
+      reportTemplate: A4-Hochformat.jrxml
+      attributes:
+        qrcodeurl: !string {}
+        dataOwner: !string {}
+        thirdPartyDataOwner: !string {}
+        shortLink: !string {}
+        map: !map
+          maxDpi: 200
+          width: 539
+          height: 722
+        scalebar: !scalebar
+          width: 122
+          height: 25
+          default:
+            align: "center"
+            fontSize: 8
+            intervals: 4
+            unit: km
+            barSize: 5
+            type: line
+            lineWidth: 1
+        northArrow: !northArrow
+          size: 28
+          default:
+            graphic: "file://north-arrow.svg"       
+        style: !style
+          default:
+            style:
+              version: 2
+              "[type='schrift']":
+                symbolizers:
+                  - type: text
+                    pointRadius: 1
+                    graphicWidth: 0.045
+                    graphicHeight: 0.045
+                    fillColor: '#000000'
+                    fillOpacity: 0
+                    strokeColor: '#000000'
+                    strokeOpacity: 0
+                    strokeLinecap: 'round'
+                    strokeLinejoin: 'round'
+                    label: 'Test'
+                    labelXOffset: 0
+                    labelYOffset: 0
+                    labelAlign: 'cm'
+                    fontColor: '#ff0000'
+                    fontFamily: 'HELVETICA'
+                    fontSize: 16
+                    fontWeight: 'normal'
+      processors:
+          - !reportBuilder
+            directory: '.'         
+          - !createMap {}
+          - !createScalebar {}
+          - !createNorthArrow {}  
+          - !setStyle {} 
+            
